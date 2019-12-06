@@ -19,7 +19,6 @@ public class CreateAccountPage {
         library.enter("Phone textbox", "7667888298", By.cssSelector("#phone"));
         library.click("Create an Account button", By.cssSelector("[type='submit']"));
         library.click("Skip for now & Continue Shopping buttin", By.cssSelector("[data-automation-id='subscriptionsSkipForNowContinueShoppingButton']"));
-
     }
 
 }
