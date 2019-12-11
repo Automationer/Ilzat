@@ -1,14 +1,14 @@
 package com.homedepot.base;
 
 import com.homedepot.common.Library;
-import org.junit.After;
-import org.junit.Before;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 
 public class Base {
 
     public Library library;
-    public static WebDriver driver;
+    private static WebDriver driver;
 
     @Before
     public void setup() {
@@ -21,4 +21,7 @@ public class Base {
         driver.quit();
     }
 
+    public static WebDriver getDriver() {
+        return driver;
+    }
 }

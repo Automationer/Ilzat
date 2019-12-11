@@ -1,26 +1,27 @@
 package com.homedepot.pageObjects.sections;
 
-import com.homedepot.common.Library;
-import org.openqa.selenium.By;
+import com.homedepot.base.Base;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 public class HeaderSection {
 
-    private Library library;
+    @FindBy(css = "#TasklinkList>li>a") List<WebElement> headerTask_links;
+    @FindBy(css = ".ShoppingLinks>li") List<WebElement> header_tabs;
 
     public HeaderSection() {
-        library = new Library();
+
+        PageFactory.initElements(Base.getDriver(), this);
     }
 
     public List<WebElement> getHeaderTaskLinks() {
-        List<WebElement> header_task_links = library.findAll("Header task links", By.cssSelector("#TasklinkList>li>a"));
-        return header_task_links;
+        return headerTask_links;
     }
 
     public List<WebElement> getHeaderTabs() {
-        List<WebElement> header_tabs = library.findAll("Header Tabs", By.cssSelector(".ShoppingLinks>li"));
         return header_tabs;
     }
 

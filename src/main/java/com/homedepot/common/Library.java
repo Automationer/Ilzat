@@ -1,6 +1,5 @@
 package com.homedepot.common;
 
-import com.homedepot.pageObjects.HomePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -21,12 +20,21 @@ public class Library {
         driver = new ChromeDriver();
         driver.get("https://www.homedepot.com/");
         driver.manage().window().setSize(new Dimension(1600, 1300));
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        return new HomePage().getDriver();
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        return driver;
     }
 
     public void enter(String elementName, String value, By by) {
+        if (by instanceof By.ByXPath || by instanceof By.ByCssSelector || by instanceof By.ById) {
+            WebElement element = wait.waitUntilPresent(by);
+            element.clear();
+            element.sendKeys(value);
+        } else
+            System.err.println("Locator is not implemented");
+    }
+
+    public void enter(String value, By by) {
         if (by instanceof By.ByXPath || by instanceof By.ByCssSelector || by instanceof By.ById) {
             WebElement element = wait.waitUntilPresent(by);
             element.clear();
@@ -42,12 +50,28 @@ public class Library {
             System.err.println("Locator is not implemented");
     }
 
+    public void click(By by) {
+        if (by instanceof By.ByXPath || by instanceof By.ByCssSelector || by instanceof By.ById)
+            wait.waitUntilClickable(by).click();
+        else
+            System.err.println("Locator is not implemented");
+    }
+
+    public void click(WebElement element) {
+        wait.waitUntilClickable(element).click();
+    }
+
     public void click(String elementName, WebElement element) {
         wait.waitUntilClickable(element);
         element.click();
     }
 
     public WebElement find(String elementName, By by) {
+        WebElement element = wait.waitUntilPresent(by);
+        return element;
+    }
+
+    public WebElement find(By by) {
         WebElement element = wait.waitUntilPresent(by);
         return element;
     }
@@ -94,6 +118,11 @@ public class Library {
     public void switchToIframe(By by) {
         WebDriverWait wait = new WebDriverWait(driver, 7);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(by));
+    }
+
+    public void switchToIframe(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 7);
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
     }
 
     public void switchToDefaultContent() {

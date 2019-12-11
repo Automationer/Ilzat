@@ -1,25 +1,34 @@
 package com.homedepot.pageObjects;
 
+import com.homedepot.base.Base;
 import com.homedepot.common.Library;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage {
 
     private Library library;
 
+    @FindBy(css = "#email") WebElement email_textBox;
+    @FindBy(css = "#password-input-field") WebElement password_textBox;
+    @FindBy(css = "button.bttn--primary") WebElement signIn_button;
+    @FindBy(css = "[data-automation-id='signInCreateAnAccountButton']") WebElement createAccount_button;
+
     public SignInPage() {
         library = new Library();
+        PageFactory.initElements(Base.getDriver(), this);
     }
 
     public void signIn(String username, String password) {
-        library.enter("Email textbox", username, By.cssSelector("#email"));
-        library.enter("Password textbox", password, By.cssSelector("#password-input-field"));
-        library.click("Sign in button", By.cssSelector("button.bttn--primary"));
+        email_textBox.sendKeys(username);
+        password_textBox.sendKeys(password);
+        signIn_button.click();
     }
 
-    public CreateAccountPage clickOnCreateAccount() {
-        library.click("Create An Account button", By.cssSelector("[data-automation-id='signInCreateAnAccountButton']"));
-        return new CreateAccountPage();
+    public void clickOnCreateAccount() {
+        createAccount_button.click();
     }
 
 
