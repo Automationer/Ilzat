@@ -11,9 +11,12 @@ public class HomePage {
 
     private Library library;
 
-    @FindBy(css = "#headerMyAccount") WebElement myAccount_header;
-    @FindBy(css = "p>[title='Sign in to your account']") WebElement signIn_button;
-    @FindBy(css = "a>#headerMyAccountTitle>span") public WebElement login_header;
+    @FindBy(css = "#headerMyAccount")
+    WebElement myAccount_header;
+    @FindBy(css = "p>[title='Sign in to your account']")
+    WebElement signIn_button;
+    @FindBy(css = "a>#headerMyAccountTitle>span")
+    public WebElement login_header;
 
     public HomePage() {
         library = new Library();

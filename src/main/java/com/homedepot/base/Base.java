@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class Base {
 
     public Library library;
-    private static WebDriver driver;
+    public static WebDriver driver;
 
     @Before
     public void setup() {
@@ -25,3 +25,13 @@ public class Base {
         return driver;
     }
 }
+
+
+
+
+
+
+
+
+
+

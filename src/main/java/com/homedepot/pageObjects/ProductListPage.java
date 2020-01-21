@@ -16,7 +16,8 @@ public class ProductListPage {
     @FindBy(xpath = "(//*[@class='product-result__wrapped-results']/div/div/div)[1]/div[2]/div[6]/div/div[2]/div/button/span")
     WebElement addToCart_button;
 
-    @FindBy(css = ".thd-overlay-frame") WebElement iframe;
+    @FindBy(css = ".thd-overlay-frame")
+    WebElement iframe;
 
     public ProductListPage() {
         library = new Library();

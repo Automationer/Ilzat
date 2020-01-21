@@ -9,8 +9,10 @@ import java.util.List;
 
 public class HeaderSection {
 
-    @FindBy(css = "#TasklinkList>li>a") List<WebElement> headerTask_links;
-    @FindBy(css = ".ShoppingLinks>li") List<WebElement> header_tabs;
+    @FindBy(css = "#TasklinkList>li>a")
+    List<WebElement> headerTask_links;
+    @FindBy(css = ".ShoppingLinks>li")
+    List<WebElement> header_tabs;
 
     public HeaderSection() {
 

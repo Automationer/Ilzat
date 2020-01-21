@@ -16,7 +16,7 @@ public class Library {
     public CustomWait wait = new CustomWait();
 
     public WebDriver openBrowser() {
-        System.setProperty("webdriver.chrome.driver", "/Users/yilizatiabudusaimaiti/IdeaProjects/Cyram_Automation/StartOver/src/main/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://www.homedepot.com/");
         driver.manage().window().setSize(new Dimension(1600, 1300));

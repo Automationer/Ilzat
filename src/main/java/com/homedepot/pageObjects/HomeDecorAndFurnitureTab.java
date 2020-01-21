@@ -18,7 +18,8 @@ public class HomeDecorAndFurnitureTab {
     @FindBy(xpath = "(//div[@class='homeDecorFurnitureFlyout__bay  '])[6]/div/a")
     List<WebElement> fragranceAndCandles_links;
 
-    @FindBy(css = ".thd-overlay-frame") WebElement iframe;
+    @FindBy(css = ".thd-overlay-frame")
+    WebElement iframe;
 
     public HomeDecorAndFurnitureTab() {
         library = new Library();

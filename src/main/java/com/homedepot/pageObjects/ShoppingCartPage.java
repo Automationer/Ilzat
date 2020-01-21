@@ -13,10 +13,14 @@ public class ShoppingCartPage {
     private Library library;
     private SaveToFavourites_Popup saveToFavourites_popup = new SaveToFavourites_Popup();
 
-    @FindBy(css = "a[data-automation-id='removeItem']") WebElement remove_button;
-    @FindBy(css = "[data-automation-id='appEmptyShoppingCartText']") public WebElement cartEmpty_message;
-    @FindBy(css = "[type='tel']") public WebElement itemQnty_box;
-    @FindBy(xpath = "//a[text()='Save to Favorites']") public WebElement saveToFav_hyperLink;
+    @FindBy(css = "a[data-automation-id='removeItem']")
+    WebElement remove_button;
+    @FindBy(css = "[data-automation-id='appEmptyShoppingCartText']")
+    public WebElement cartEmpty_message;
+    @FindBy(css = "[type='tel']")
+    public WebElement itemQnty_box;
+    @FindBy(xpath = "//a[text()='Save to Favorites']")
+    public WebElement saveToFav_hyperLink;
 
     public ShoppingCartPage() {
         library = new Library();
